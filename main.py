@@ -10,12 +10,13 @@ user_data = {}
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    print(message.text)
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("🥊 Course", "📩 Contact")
+    markup.add("Course", "Contact")
 
     bot.send_message(
         message.chat.id,
-        "🥊 Welcome to Almashan Boxing System\n\n"
+        "🥊 Welcome to Almaskhan Boxing System\n\n"
         "If you are a beginner and do not know where to start, this course is for you.\n\n"
         "Learn boxing step by step:\n"
         "• stance\n"
@@ -28,13 +29,13 @@ def start(message):
     )
     
 
-@bot.message_handler(func=lambda message: message.text == "🥊 Course")
+@bot.message_handler(func=lambda message: message.text == "Course")
 def course(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add("💳 Buy Access", "📚 My Lessons", "⬅️ Back")
     bot.send_message(message.chat.id, "Choose an action:", reply_markup=markup)
 
-@bot.message_handler(func=lambda message: message.text == "💳 Buy Access")
+@bot.message_handler(func=lambda message: message.text == "Buy Access")
 def buy(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add("📩 Send Receipt")
@@ -45,7 +46,7 @@ def buy(message):
         reply_markup=markup
     )
 
-@bot.message_handler(func=lambda message: message.text == "📤 Отправить чек")
+@bot.message_handler(func=lambda message: message.text == "Send Receipt")
 def send_check(message):
     bot.send_message(message.chat.id, "Отправьте чек (фото или скрин)")
     bot.register_next_step_handler(message, process_check)
