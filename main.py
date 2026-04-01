@@ -11,7 +11,7 @@ user_data = {}
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("🥊 Курс", "📩 Связаться")
+    markup.add("🥊 Course", "📩 Contact")
 
     bot.send_message(
         message.chat.id,
@@ -28,20 +28,20 @@ def start(message):
     )
     
 
-@bot.message_handler(func=lambda message: message.text == "🥊 Курс")
+@bot.message_handler(func=lambda message: message.text == "🥊 Course")
 def course(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("💳 Купить доступ", "⏳ Мои уроки (скоро)")
-    bot.send_message(message.chat.id, "Выберите действие:", reply_markup=markup)
+    markup.add("💳 Buy Access", "📚 My Lessons", "⬅️ Back")
+    bot.send_message(message.chat.id, "Choose an action:", reply_markup=markup)
 
-@bot.message_handler(func=lambda message: message.text == "💳 Купить доступ")
+@bot.message_handler(func=lambda message: message.text == "💳 Buy Access")
 def buy(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
-    markup.add("📤 Отправить чек")
+    markup.add("📩 Send Receipt")
 
     bot.send_message(
         message.chat.id,
-        "Инструкция по оплате:\n\nПосле оплаты нажмите кнопку ниже 👇",
+        "💳 Payment Instructions\n\n" "Price: $49.90\n\n" "After payment, click the button below 👇",
         reply_markup=markup
     )
 
