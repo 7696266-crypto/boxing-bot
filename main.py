@@ -13,13 +13,20 @@ def start(message):
     markup = telebot.types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add("🥊 Курс", "📩 Связаться")
 
-    bot.send_message(
-        message.chat.id,
-        "🥊 Welcome to Almaskhan Boxing System\n\n"
-        "If you’re just starting boxing and don’t know where to begin — you’re in the right place.\n"
-        "Choose an option below 👇",
-        reply_markup=markup
-    )
+   bot.send_message(
+    message.chat.id,
+    "🥊 Welcome to Almashan Boxing System\n\n"
+    "If you’re a beginner and don’t know where to start, this course is for you.\n\n"
+    "Learn boxing step by step:\n"
+    "• stance\n"
+    "• punches\n"
+    "• footwork\n"
+    "• defense\n"
+    "• beginner combinations\n\n"
+    "Choose an option below 👇",
+    reply_markup=markup
+)
+    
 
 @bot.message_handler(func=lambda message: message.text == "🥊 Курс")
 def course(message):
